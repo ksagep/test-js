@@ -1,19 +1,29 @@
 const startButton = document.getElementById('start-btn');
 const questionContainerElement = document.getElementById('question-container');
+const questionElement = document.getElementById('question');
+const answerButtonsElement = document.getElementById('answer-buttons');
 
-const shuffledQuestions, currentQuestionIndex;
+let shuffledQuestions, currentQuestionIndex;
 
 startButton.addEventListener('click', startGame);
 
 function startGame() {
     console.log('Started');
     startButton.classList.add('hide');
+    shuffledQuestions = questions.sort(() => Math.random() - .5);
+    currentQuestionIndex = 0;
     questionContainerElement.classList.remove('hide');
     setNextQuestion();
 }
 
-function setNextQuestion() {
+ 
 
+function setNextQuestion() {
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+}
+
+function showQuestion(question) {
+    questionElement.innerText = question.question;
 }
 
 function selectAnswer() {
@@ -22,12 +32,93 @@ function selectAnswer() {
 
 const questions = [
     {
-        question: '',
+        question: 'Where does coffee come from?',
         answers: [
-            {text: '', correct: ''},
-            {text: '', correct: ''},
-            {text: '', correct: 'true'},
-            {text: '', correct: 'false'}
+            {text: 'Ethiopia', correct: 'true'},
+            {text: 'Italy', correct: 'false'},
+            {text: 'France', correct: 'false'},
+            {text: 'from a nearby store', correct: 'false'}
         ]
-    }
-]
+    },
+    {
+        question: "Which is not a roasting method?",
+        answer:[
+          { text: "Spanish", correct: false },
+          { text: "Italian", correct: false },
+          { text: "French", correct: false },
+          { text: "British", correct: true }
+        ]        
+      },
+      {
+        question: "What color is the ripe coffee berry?",
+        answer:[
+          { text: "Yellow", correct: false },
+          { text: "Green", correct: false },
+          { text: "Red", correct: true },
+          { text: "Blue", correct: false }
+        ]        
+      },
+      {
+        question: "There is really no caffeine in decaffeinated coffee?",
+        answer:[
+          { text: "Yes, it is true", correct: false },
+          { text: "Decaffeinated coffee contains 2-6% caffeine", correct: true },
+          { text: "Maybe, it is true", correct: false },
+          { text: "What does decaffeinated coffee mean?", correct: false }
+        ]        
+      },
+      {
+        question: "Where they produce the most coffee in the world?",
+        answer:[
+          { text: "Vietnam", correct: false },
+          { text: "Brasil", correct: true },
+          { text: "Ethiopia", correct: false },
+          { text: "India", correct: false }
+        ]        
+      },
+      {
+        question: "What is not the main characteristic of robusta coffees?",
+        answer:[
+          { text: "acidic", correct: false },
+          { text: "high in caffeine", correct: false },
+          { text: "dark brown", correct: true },
+          { text: "full-bodied", correct: false }
+        ]
+      },
+      {
+        question: "What is not the main characteristic of arabica coffees?",
+        answer:[
+          { text: "sweeter than the robusta", correct: false },
+          { text: "low in caffeine", correct: false },
+          { text: "light-bodied", correct: false },
+          { text: "smaller beans", correct: true }
+        ]
+      },
+      {
+        question: "When coffee was discovered?",
+        answer:[
+          { text: "15th century", correct: true },
+          { text: "16th century", correct: false },
+          { text: "17th century", correct: false },
+          { text: "19th century", correct: false }
+        ]
+      },
+      {
+        question: 'What percentage of the coffee stays warm if we add cream to it?',
+        answer:[
+          { text: '10%', correct: false },
+          { text: '20%', correct: true },
+          { text: '30%', correct: false },
+          { text: 'if you have a microwave oven, always', correct: false }
+        ]
+      },
+      {
+        question: 'In which country do people drink the most coffee?',
+        answer:[
+          { text: 'USA', correct: false },
+          { text: 'Finland', correct: true },
+          { text: 'Russia', correct: false },
+          { text: 'Vietnam', correct: false }
+        ]
+      }
+];
