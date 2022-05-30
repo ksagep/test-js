@@ -13,7 +13,6 @@ nextButton.addEventListener('click', () => {
 });
 
 function startGame() {
-    console.log('Started');
     startButton.classList.add('hide');
     shuffledQuestions = questions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
@@ -28,7 +27,7 @@ function setNextQuestion() {
 
 function showQuestion(question) {
     questionElement.innerText = question.question;
-    question.answers.forEach(answer => {
+    question.answer.forEach(answer => {
       const button = document.createElement('button');
       button.innerText = answer.text;
       button.classList.add('btn');
@@ -44,13 +43,13 @@ function resetState() {
   clearStatusClass(document.body);
   nextButton.classList.add('hide');
   while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild(answerButtonsElement.firstElementChild);
+    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
   }
 }
 
 function selectAnswer(e) {
   const selectedButton = e.target;
-  const correct = selectedButton.dataser.correct;
+  const correct = selectedButton.dataset.correct;
   setStatusClass(document.body, correct);
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct);
@@ -66,25 +65,25 @@ function selectAnswer(e) {
 function setStatusClass(element, correct) {
   clearStatusClass(element);
   if (correct) {
-    element.ClassList.add('correct');
+    element.classList.add('correct');
   } else {
-    element.ClassList.add('wrong');
+    element.classList.add('wrong');
   }
 }
 
 function clearStatusClass(element) {
-    element.ClassList.remove('correct');
-    element.ClassList.remove('wrong');
+    element.classList.remove('correct');
+    element.classList.remove('wrong');
 }
 
 const questions = [
     {
         question: 'Where does coffee come from?',
-        answers: [
-            {text: 'Ethiopia', correct: 'true'},
-            {text: 'Italy', correct: 'false'},
-            {text: 'France', correct: 'false'},
-            {text: 'from a nearby store', correct: 'false'}
+        answer: [
+          { text: 'Ethiopia', correct: true },
+          { text: 'Italy', correct: false },
+          { text: 'France', correct: false },
+          { text: 'from a nearby store', correct: false }
         ]
     },
     {
@@ -92,62 +91,62 @@ const questions = [
         answer:[
           { text: 'Spanish', correct: false },
           { text: 'Italian', correct: false },
-          { text: "French", correct: false },
-          { text: "British", correct: true }
+          { text: 'French', correct: false },
+          { text: 'British', correct: true }
         ]        
       },
       {
         question: 'What color is the ripe coffee berry?',
         answer:[
-          { text: "Yellow", correct: false },
-          { text: "Green", correct: false },
-          { text: "Red", correct: true },
-          { text: "Blue", correct: false }
+          { text: 'Yellow', correct: false },
+          { text: 'Green', correct: false },
+          { text: 'Red', correct: true },
+          { text: 'Blue', correct: false }
         ]        
       },
       {
-        question: "There is really no caffeine in decaffeinated coffee?",
+        question: 'There is really no caffeine in decaffeinated coffee?',
         answer:[
-          { text: "Yes, it is true", correct: false },
-          { text: "Decaffeinated coffee contains 2-6% caffeine", correct: true },
-          { text: "Maybe, it is true", correct: false },
-          { text: "What does decaffeinated coffee mean?", correct: false }
+          { text: 'Yes, it is true', correct: false },
+          { text: 'Decaffeinated coffee contains 2-6% caffeine', correct: true },
+          { text: 'Maybe, it is true', correct: false },
+          { text: 'What does decaffeinated coffee mean?', correct: false }
         ]        
       },
       {
-        question: "Where they produce the most coffee in the world?",
+        question: 'Where they produce the most coffee in the world?',
         answer:[
-          { text: "Vietnam", correct: false },
-          { text: "Brasil", correct: true },
-          { text: "Ethiopia", correct: false },
-          { text: "India", correct: false }
+          { text: 'Vietnam', correct: false },
+          { text: 'Brasil', correct: true },
+          { text: 'Ethiopia', correct: false },
+          { text: 'India', correct: false }
         ]        
       },
       {
-        question: "What is not the main characteristic of robusta coffees?",
+        question: 'What is not the main characteristic of robusta coffees?',
         answer:[
-          { text: "acidic", correct: false },
-          { text: "high in caffeine", correct: false },
-          { text: "dark brown", correct: true },
-          { text: "full-bodied", correct: false }
+          { text: 'acidic', correct: false },
+          { text: 'high in caffeine', correct: false },
+          { text: 'dark brown', correct: true },
+          { text: 'full-bodied', correct: false }
         ]
       },
       {
-        question: "What is not the main characteristic of arabica coffees?",
+        question: 'What is not the main characteristic of arabica coffees?',
         answer:[
-          { text: "sweeter than the robusta", correct: false },
-          { text: "low in caffeine", correct: false },
-          { text: "light-bodied", correct: false },
-          { text: "smaller beans", correct: true }
+          { text: 'sweeter than the robusta', correct: false },
+          { text: 'low in caffeine', correct: false },
+          { text: 'light-bodied', correct: false },
+          { text: 'smaller beans', correct: true }
         ]
       },
       {
-        question: "When coffee was discovered?",
+        question: 'When coffee was discovered?',
         answer:[
-          { text: "15th century", correct: true },
-          { text: "16th century", correct: false },
-          { text: "17th century", correct: false },
-          { text: "19th century", correct: false }
+          { text: '15th century', correct: true },
+          { text: '16th century', correct: false },
+          { text: '17th century', correct: false },
+          { text: '19th century', correct: false }
         ]
       },
       {
