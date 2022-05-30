@@ -6,9 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <script defer src="assets/js/script.js"></script>
+    <script src="https://kit.fontawesome.com/c7dbda0798.js"></script>
     <title>Quiz App</title>
 </head>
 <body>
+    <header class="heading">
+        <div>
+            <img src="assets/images/coffee-biins-dec.jpg" alt="like to coffee beans" class="front-image-left">
+        </div>
+        <h1 >Coffee Quiz</h1>
+        <div>
+            <img src="assets/images/coffee-is-ready.jpg" alt="five minutes break with coffee" class="front-image-right">
+        </div>
+    </header>
+    <!-- Instructions for player -->        
+    <section>
+        <div id="cover-text">
+            <h4>Welcome to the Coffee Quiz!</h4>
+            <h4>The aim of this quiz to present some interesting info which related to coffee.</h4>
+            <h4>You will get some questions that will show you how well you know about coffee.</h4>
+            <h4>Below the instructions you can see the basic structure of the quiz.</h4>
+            <h4>Enjoy the game!</h4>
+        </div>
+    </section>
     <div class="container">
         <div id="question-container" class="hide"></div>
             <div id="question">Question</div>
@@ -22,6 +42,20 @@
             <button id="start-btn" class="start-btn btn">Start</button>
             <button id="next-btn" class="next-btn btn hide">Next</button>
         </div>
+        <div class="score-area">
+            <p class="scores">Correct Answers <span id="score">0</span></p>
+            <p class="scores">Incorrect Answers <span id="incorrect">0</span></p>
+        </div>
     </div>
+    
+    <!-- footer -->
+    <footer class="social-network">
+        <a href="https://github.com" target="_blank" rel="noopener"
+        aria-label="Visit my Github page (open in a new tab)"><i class="fab fa-github-square"></i></a>
+        <a href="https://facebook.com" target="_blank" rel="noopener"
+        aria-label="Visit my Facebook page (open in a new tab)"><i class="fab fa-facebook-square"></i></a>
+        <p>&copy; 2022</p>
+        <p>Coffee Quiz</p>
+    </footer>  
 </body>
 </html>

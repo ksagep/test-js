@@ -16,6 +16,7 @@ body {
     display: flex;
     width: 100vw;
     height: 100vh;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: hsl(var(--hue), 100%, 20%);
@@ -32,6 +33,7 @@ body.wrong {
 .container {
     width: 800px;
     max-width: 80%;
+    
     background-color: white;
     border-radius: 5px;
     padding: 10px;
@@ -68,6 +70,28 @@ body.wrong {
     --hue: var(--hue-wrong);
 }
 
+/* heading */
+
+.heading {
+    font-size: 25px;
+    text-align: center;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+}
+
+.front-image-left {    
+    float: left;
+    padding-bottom: 70px;    
+}
+
+.front-image-right {
+    float: right;
+    padding-bottom: 70px;    
+       
+}
+
 .start-btn, .next-btn {
     font-size: 1.5rem;
     font-weight: bold;
@@ -82,4 +106,16 @@ body.wrong {
 
 .hide {
     display: none;
+}
+
+/* cover text */
+
+#cover-text {
+    color: #0a0a0a;
+    font-size: 80%;
+    font-family: Raleway;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 800px;
 }
