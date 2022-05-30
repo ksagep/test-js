@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    
+    <script defer src="assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/c7dbda0798.js"></script>
-    <title> Coffee Quiz</title>
+    <title>Quiz App</title>
 </head>
 <body>
     <header class="heading">
@@ -19,18 +19,24 @@
             <img src="assets/images/coffee-is-ready.jpg" alt="five minutes break with coffee" class="front-image-right">
         </div>
     </header>
-    <!-- Instructions for player -->        
-    <section>
-        <div id="cover-text">
-            <h4>Welcome to the Coffee Quiz!</h4>
-            <h4>The aim of this quiz to present some interesting info which related to coffee.</h4>
-            <h4>You will get some questions that will show you how well you know about coffee.</h4>
-            <h4>Enjoy the game!</h4>
+    
+    <div class="container">
+        <div id="question-container" class="hide"></div>
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn">Start</button>
+            <button id="next-btn" class="next-btn btn hide">Next</button>
         </div>
-    </section>
-    <!-- Start button for the quiz -->
-    <div id="start-button">
-        <a href="quiz.html">Start the Quiz</a>        
+        <div class="scores">
+            <p>Correct Answers <span id="score">0</span></p>
+            <p>Incorrect Answers <span id="incorrect">0</span></p>
+        </div>
     </div>
     
     <!-- footer -->

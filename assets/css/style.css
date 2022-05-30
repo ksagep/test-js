@@ -33,7 +33,7 @@ body.wrong {
 .container {
     width: 800px;
     max-width: 80%;
-    
+    text-align: center;
     background-color: white;
     border-radius: 5px;
     padding: 10px;
@@ -98,6 +98,11 @@ body.wrong {
     padding: 10px 20px;
 }
 
+#start-button {
+    color: white;
+    margin: 25px;
+}
+
 .controls {
     display: flex;
     justify-content: center;
@@ -118,4 +123,27 @@ body.wrong {
     letter-spacing: 2px;
     text-align: center;
     width: 800px;
+}
+
+.scores {
+    text-align: center;
+}
+
+footer {
+    height: 100px;        
+}
+
+.social-network {
+    text-align: center;
+    align-items: center;
+}
+
+.social-network > li {
+    display: inline;
+}
+
+.social-network i {
+    font-size: 160%;
+    margin: 15px;
+    color: black;
 }
