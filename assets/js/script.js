@@ -5,6 +5,12 @@ const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
 
 let shuffledQuestions, currentQuestionIndex;
+let scorenumbers = document.getElementById('scores');
+let endresult = document.getElementById('end-result');
+let lastMessage=document.getElementById('last-message');
+
+let scores = 0;
+let counter;
 
 /** Get the button elements and add event listeners to them */
 
@@ -20,11 +26,17 @@ function startGame() {
     currentQuestionIndex = 0;
     questionContainerElement.classList.remove('hide');
     setNextQuestion();
+    
 }
 
 function setNextQuestion() {
     resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
+    if (selectAnswer < showQuestion.length) {
+      checkAnswer();
+    } else {
+      gameover();
+    }
 }
 
 /** Take the questions and the linked possible answers to the scren */
@@ -84,32 +96,41 @@ function clearStatusClass(element) {
 
 /** Check the answer which was chose by player */
 
-function checkAnswer(event) {
-  console.log(event);
+function checkAnswer(e) {
+  console.log(e);
   let userAnswer = parseInt(document.getElementById("answer-buttons").innerText);
   let calculatedAnswer = selectAnswer(e, correct);
   let correct = userAnswer === calculatedAnswer;
-
-if (correct) {
-  incrementScore();
-} else {
-  incrementFalseAnswer();
-setNextQuestion();
+  scorepush();
+  scores++;
+  setNextQuestion();
 }
 
 /** Gets the correct answers from the DOM and increments it by 1 */
 
-function incrementScore() {
-let newScore = parseInt(document.getElementById("score").innerText);
-document.getElementById("score").innerText = ++newScore;
+function scorepush() {
+  scorenumbers.innerHTML = `Score: ${scores}/10`;
 }
 
-/** Gets the incorrect answers from the DOM and increments it by 1 */
-function incrementFalseAnswer() {
-let newScore = parseInt(document.getElementById("incorrect").innerText);
-document.getElementById("incorrect").innerText = ++newScore;
+function gameover() {
+  console.log('Finished the game');
+  clearInterval(counter);
+  endscore();
 }
 
+function endscore() {
+  console.log('Shows the results');
+  endresult.innerText = `Your result: ${scores}/10`;
+  if(scores<=5){
+    lastMessage.innerText="I think you can do this better! Drink another coffee!";
+  }
+  else if(scores >5 && scores <= 9){    
+    lastMessage.innerText="You know some important things.";
+  }
+  else if(scores === 10){
+    lastMessage.innerText="Congratulations! You are a real coffee fan!";
+  }
+}
 
 const questions = [
     {
