@@ -7,7 +7,7 @@ const answerButtonsElement = document.getElementById('answer-buttons');
 let shuffledQuestions, currentQuestionIndex;
 let scorenumbers = document.getElementById('scores');
 let endresult = document.getElementById('end-result');
-let lastMessage=document.getElementById('last-message');
+let lastMessage = document.getElementById('last-message');
 
 let scores = 0;
 let counter;
@@ -32,14 +32,21 @@ function startGame() {
 function setNextQuestion() {
     resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
-    if (selectAnswer < showQuestion.length) {
-      checkAnswer();
+    
+    console.log('answer', selectAnswer);
+    console.log('show question length', showQuestion.length);
+    console.log('shuffled questions length', shuffledQuestions.length);
+    console.log('attempted questions', attemptedQuestions);
+
+    if (attemptedQuestions < shuffledQuestions.length) {
+      checkAnswer(); 
+      showQuestion();
     } else {
       gameover();
     }
 }
 
-/** Take the questions and the linked possible answers to the scren */
+/** Take the questions and the linked possible answers to the screen */
 
 function showQuestion(question) {
     questionElement.innerText = question.question;
