@@ -84,35 +84,32 @@ function clearStatusClass(element) {
 
 /** Check the answer which was chose by player */
 
-function checkAnswer() {
+function checkAnswer(event) {
+  console.log(event);
+  let userAnswer = parseInt(document.getElementById("answer-buttons").innerText);
+  let calculatedAnswer = selectAnswer(e, correct);
+  let correct = userAnswer === calculatedAnswer;
 
-  let userAnswer = document.getElementById("answer-buttons").value;
-  let calculatedAnswer = selectAnswer(correct);
-  let correct = userAnswer === calculatedAnswer[correct];
-
-  if (correct) {
-      incrementScore();
-  } else {
-      incrementFalseAnswer();
-  }
+if (correct) {
+  incrementScore();
+} else {
+  incrementFalseAnswer();
+setNextQuestion();
 }
 
 /** Gets the correct answers from the DOM and increments it by 1 */
 
 function incrementScore() {
-
-  let newScore = parseInt(document.getElementById("score").innerText);
-  document.getElementById("score").innerText = ++newScore;
-
+let newScore = parseInt(document.getElementById("score").innerText);
+document.getElementById("score").innerText = ++newScore;
 }
 
 /** Gets the incorrect answers from the DOM and increments it by 1 */
 function incrementFalseAnswer() {
-
-  let newScore = parseInt(document.getElementById("incorrect").innerText);
-  document.getElementById("incorrect").innerText = ++newScore;
-  
+let newScore = parseInt(document.getElementById("incorrect").innerText);
+document.getElementById("incorrect").innerText = ++newScore;
 }
+
 
 const questions = [
     {
