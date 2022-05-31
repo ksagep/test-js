@@ -6,6 +6,8 @@ const answerButtonsElement = document.getElementById('answer-buttons');
 
 let shuffledQuestions, currentQuestionIndex;
 
+/** Get the button elements and add event listeners to them */
+
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++;
@@ -24,6 +26,8 @@ function setNextQuestion() {
     resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
+
+/** Take the questions and the linked possible answers to the scren */
 
 function showQuestion(question) {
     questionElement.innerText = question.question;
@@ -46,6 +50,8 @@ function resetState() {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild);
   }
 }
+
+/** Provide the possibility of selection from shuffled questions */
 
 function selectAnswer(e) {
   const selectedButton = e.target;
@@ -75,6 +81,8 @@ function clearStatusClass(element) {
     element.classList.remove('correct');
     element.classList.remove('wrong');
 }
+
+/** Check the answer which was chose by player */
 
 function checkAnswer() {
 
