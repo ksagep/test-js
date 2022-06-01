@@ -38,7 +38,7 @@ function setNextQuestion() {
     console.log('shuffled questions length', shuffledQuestions.length);
     console.log('attempted questions', attemptedQuestions);
 
-    if (attemptedQuestions < shuffledQuestions.length) {
+    if (currentQuestionIndex +1 < shuffledQuestions.length) {
       checkAnswer(); 
       showQuestion();
     } else {
@@ -103,10 +103,10 @@ function clearStatusClass(element) {
 
 /** Check the answer which was chose by player */
 
-function checkAnswer(e) {
-  console.log(e);
+function checkAnswer(question) {
+  console.log(question);
   let userAnswer = parseInt(document.getElementById("answer-buttons").innerText);
-  let calculatedAnswer = selectAnswer(e, correct);
+  let calculatedAnswer = selectAnswer(correct, true);
   let correct = userAnswer === calculatedAnswer;
   scorepush();
   scores++;
