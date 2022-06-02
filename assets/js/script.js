@@ -12,6 +12,8 @@ let lastMessage = document.getElementById('last-message');
 let scores = 0;
 let counter;
 
+let restarted = false;
+
 /** Get the button elements and add event listeners to them */
 
 startButton.addEventListener('click', startGame);
@@ -21,6 +23,12 @@ nextButton.addEventListener('click', () => {
 });
 
 function startGame() {
+    if(restarted) {
+      restarted = false;
+      lastMessage.innerText = ""
+      endresult.innerText = ""
+    }  
+  
     startButton.classList.add('hide');
     shuffledQuestions = questions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
@@ -37,13 +45,6 @@ function setNextQuestion() {
     console.log('show question length', showQuestion.length);
     console.log('shuffled questions length', shuffledQuestions.length);
     console.log('attempted questions', attemptedQuestions);
-
-    if (currentQuestionIndex +1 < shuffledQuestions.length) {
-      checkAnswer(); 
-      showQuestion();
-    } else {
-      gameover();
-    }
 }
 
 /** Take the questions and the linked possible answers to the screen */
@@ -76,6 +77,11 @@ function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
   setStatusClass(document.body, correct);
+  if(correct) {
+    scores++;
+    scorepush();
+  }
+
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct);
   });
@@ -84,6 +90,10 @@ function selectAnswer(e) {
   }  else {
     startButton.innerText = 'Restart';
     startButton.classList.remove('hide');
+    restarted = true;
+  }
+  if (currentQuestionIndex +1 >= shuffledQuestions.length) {
+    gameover();
   }
 }
 
@@ -101,18 +111,6 @@ function clearStatusClass(element) {
     element.classList.remove('wrong');
 }
 
-/** Check the answer which was chose by player */
-
-function checkAnswer(question) {
-  console.log(question);
-  let userAnswer = parseInt(document.getElementById("answer-buttons").innerText);
-  let calculatedAnswer = selectAnswer(correct, true);
-  let correct = userAnswer === calculatedAnswer;
-  scorepush();
-  scores++;
-  setNextQuestion();
-}
-
 /** Gets the correct answers from the DOM and increments it by 1 */
 
 function scorepush() {
@@ -123,6 +121,9 @@ function gameover() {
   console.log('Finished the game');
   clearInterval(counter);
   endscore();
+
+  scores = 0;
+  scorepush();
 }
 
 function endscore() {
@@ -132,7 +133,7 @@ function endscore() {
     lastMessage.innerText="I think you can do this better! Drink another coffee!";
   }
   else if(scores >5 && scores <= 9){    
-    lastMessage.innerText="You know some important things.";
+    lastMessage.innerText="You know some important things about coffee.";
   }
   else if(scores === 10){
     lastMessage.innerText="Congratulations! You are a real coffee fan!";
